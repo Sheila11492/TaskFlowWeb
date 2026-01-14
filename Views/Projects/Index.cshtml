@@ -1,0 +1,35 @@
+@model IEnumerable<TaskFlowWeb.Models.Project>
+
+@{
+    ViewData["Title"] = "Proyectos";
+}
+
+<h1 class="mb-4">Proyectos</h1>
+
+<a asp-action="Create" class="btn btn-success mb-3">Crear Proyecto</a>
+
+<table class="table table-striped">
+    <thead class="table-light">
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Número de tareas</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in Model)
+        {
+            <tr>
+                <td>@project.Name</td>
+                <td>@project.Description</td>
+                <td>@(project.Tasks?.Count() ?? 0)</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@project.Id" class="btn btn-primary btn-sm">Ver</a>
+                    <a asp-action="Edit" asp-route-id="@project.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@project.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

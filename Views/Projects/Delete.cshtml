@@ -1,0 +1,22 @@
+@model TaskFlowWeb.Models.Project
+
+@{
+    ViewData["Title"] = "Borrar Proyecto";
+}
+
+<h1>Borrar Proyecto</h1>
+
+<h3>¿Estás segura de que quieres borrar este proyecto?</h3>
+
+<div>
+    <h4>Nombre:</h4>
+    <p>@Model.Name</p>
+    <h4>Descripción:</h4>
+    <p>@Model.Description</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Borrar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

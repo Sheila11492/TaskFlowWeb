@@ -1,0 +1,154 @@
+﻿@using TaskFlowWeb.Models.ViewModels
+@model DashboardViewModel
+
+@{
+    ViewData["Title"] = "TaskFlow Web";
+}
+
+<!-- Bienvenida -->
+<div class="welcome-banner text-center py-5 bg-light rounded shadow-sm my-4">
+    <img src="~/images/logo.png" alt="TaskFlow Web" style="height:100px; margin-bottom:20px;">
+    <h1 class="display-4 fw-bold">Bienvenido a TaskFlow Web</h1>
+    <p class="lead">
+        Gestiona tus proyectos y tareas de manera fácil y profesional.
+    </p>
+
+    <div class="mt-4">
+        <a class="btn btn-primary btn-lg me-2"
+           asp-controller="Projects"
+           asp-action="Index">
+            Ver Proyectos
+        </a>
+
+        <a class="btn btn-outline-secondary btn-lg"
+           asp-controller="Tasks"
+           asp-action="Index">
+            Ver Tareas
+        </a>
+    </div>
+</div>
+
+<!-- Dashboard -->
+<div class="row text-center mt-5">
+
+    <div class="col-md-3 mb-4">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title">Proyectos</h5>
+                <h2 class="fw-bold">@Model.TotalProjects</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title">Tareas totales</h5>
+                <h2 class="fw-bold">@Model.TotalTasks</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card shadow-sm border-0 border-warning">
+            <div class="card-body">
+                <h5 class="card-title">Pendientes</h5>
+                <h2 class="fw-bold text-warning">@Model.PendingTasks</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card shadow-sm border-0 border-success">
+            <div class="card-body">
+                <h5 class="card-title">Completadas</h5>
+                <h2 class="fw-bold text-success">@Model.CompletedTasks</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Gráficos de tareas más pequeños -->
+<div class="container mx-auto p-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Gráfico de barras -->
+        <div class="bg-white p-4 rounded-lg shadow" style="height: 250px;">
+            <h2 class="text-lg font-semibold mb-2">Estado de tareas</h2>
+            <canvas id="tasksBarChart" style="height: 180px;"></canvas>
+        </div>
+
+        <!-- Gráfico de pastel -->
+        <div class="bg-white p-4 rounded-lg shadow" style="height: 250px;">
+            <h2 class="text-lg font-semibold mb-2">Proporción de tareas</h2>
+            <canvas id="tasksPieChart" style="height: 180px;"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Aviso tareas vencidas -->
+@if (Model.OverdueTasks > 0)
+{
+    <div class="alert alert-danger text-center mt-4">
+        ⚠️ Tienes <strong>@Model.OverdueTasks</strong> tareas fuera de plazo
+    </div>
+}
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Datos del ViewModel
+        const pending = @Model.PendingTasks;
+        const inProgress = @Model.InProgressTasks;
+        const completed = @Model.CompletedTasks;
+        const overdue = @Model.OverdueTasks;
+
+        // Colores pastel suaves
+        const pastelColors = ['#FDE2E2', '#D0E8F2', '#D6F5D6', '#FDEADA'];
+
+        // Gráfico de barras
+        const ctxBar = document.getElementById('tasksBarChart').getContext('2d');
+        new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Pendientes', 'En progreso', 'Completadas', 'Atrasadas'],
+                datasets: [{
+                    label: 'Tareas',
+                    data: [pending, inProgress, completed, overdue],
+                    backgroundColor: pastelColors
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: 'Estado de tareas', color: '#555', font: { size: 12 } }
+                },
+                scales: {
+                    y: { beginAtZero: true, precision:0 }
+                }
+            }
+        });
+
+        // Gráfico de pastel
+        const ctxPie = document.getElementById('tasksPieChart').getContext('2d');
+        new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: ['Pendientes', 'En progreso', 'Completadas', 'Atrasadas'],
+                datasets: [{
+                    data: [pending, inProgress, completed, overdue],
+                    backgroundColor: pastelColors
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10 } }
+                }
+            }
+        });
+    </script>
+}

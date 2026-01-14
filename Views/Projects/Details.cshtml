@@ -1,0 +1,37 @@
+@model TaskFlowWeb.Models.Project
+
+@{
+    ViewData["Title"] = "Detalles del Proyecto";
+}
+
+<h1>Detalles del Proyecto</h1>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Nombre:</h5>
+        <p class="card-text">@Model.Name</p>
+
+        <h5 class="card-title">Descripción:</h5>
+        <p class="card-text">@Model.Description</p>
+
+        <h5 class="card-title">Tareas asociadas:</h5>
+        @if (Model.Tasks != null && Model.Tasks.Any())
+        {
+            <ul class="list-group list-group-flush">
+                @foreach (var task in Model.Tasks)
+                {
+                    <li class="list-group-item">
+                        <strong>@task.Title</strong> - @task.Status.ToString()
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p class="text-muted">No hay tareas asociadas a este proyecto.</p>
+        }
+    </div>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+<a asp-action="Index" class="btn btn-secondary ms-2">Volver</a>

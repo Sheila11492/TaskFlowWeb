@@ -1,0 +1,28 @@
+@model TaskFlowWeb.Models.TaskItem
+
+<h1>Detalles de la Tarea</h1>
+
+<div>
+    <h4>Título:</h4>
+    <p>@Model.Title</p>
+
+    <h4>Descripción:</h4>
+    <p>@Model.Description</p>
+
+    <h4>Estado:</h4>
+    <p>@Model.Status</p>
+
+    <h4>Prioridad:</h4>
+    <p>@Model.Priority</p>
+
+    <h4>Fecha límite:</h4>
+    <p>@Model.DueDate.ToString("yyyy-MM-dd")</p>
+
+    <h4>Proyecto:</h4>
+    <p>@Model.Project?.Name</p>
+</div>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</p>

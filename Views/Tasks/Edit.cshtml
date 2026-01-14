@@ -1,0 +1,45 @@
+@model TaskFlowWeb.Models.TaskItem
+
+<h1>Editar Tarea</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label">Título</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">Descripción</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ProjectId" class="form-label">Proyecto</label>
+        <select asp-for="ProjectId" class="form-select" asp-items="ViewBag.Projects">
+            <option value="">-- Selecciona un proyecto --</option>
+        </select>
+        <span asp-validation-for="ProjectId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label">Estado</label>
+        <select asp-for="Status" class="form-select" asp-items="ViewBag.StatusList"></select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Priority" class="form-label">Prioridad</label>
+        <select asp-for="Priority" class="form-select" asp-items="ViewBag.PriorityList"></select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DueDate" class="form-label">Fecha límite</label>
+        <input asp-for="DueDate" type="date" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Cancelar</a>
+</form>
