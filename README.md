@@ -49,67 +49,64 @@ El proyecto sigue el patrón **Model–View–Controller (MVC)**, separando clar
 ### 📂 Estructura del proyecto
 
 TaskFlowWeb/
-│
-├─ Controllers/                 <-- Controladores MVC
-│   ├─ HomeController.cs        <-- Dashboard / Home
-│   ├─ ProjectsController.cs    <-- CRUD de Proyectos
-│   └─ TasksController.cs       <-- CRUD de Tareas
-│
-├─ Data/
-│   └─ AppDbContext.cs          <-- Contexto de Entity Framework Core
-│
-├─ Models/                      <-- Modelos de datos
-│   ├─ Project.cs               <-- Modelo Proyecto
-│   ├─ TaskItem.cs              <-- Modelo Tarea
-│   ├─ ErrorViewModel.cs        <-- Modelo de Error genérico
-│   └─ ViewModels/
-│       └─ DashboardViewModel.cs <-- Modelo para dashboard/home
-│
-├─ Views/                       <-- Vistas Razor
-│   ├─ Shared/
-│   │   ├─ _Layout.cshtml       <-- Layout principal
-│   │   ├─ _ValidationScriptsPartial.cshtml
-│   │   ├─ Error.cshtml
-│   │   └─ _Layout.cshtml.css
-│   │
-│   ├─ Home/
-│   │   ├─ Index.cshtml         <-- Dashboard
-│   │   └─ Privacy.cshtml
-│   │
-│   ├─ Projects/                <-- Vistas CRUD Proyectos
-│   │   ├─ Index.cshtml
-│   │   ├─ Create.cshtml
-│   │   ├─ Edit.cshtml
-│   │   ├─ Details.cshtml
-│   │   └─ Delete.cshtml
-│   │
-│   └─ Tasks/                   <-- Vistas CRUD Tareas
-│       ├─ Index.cshtml
-│       ├─ Create.cshtml
-│       ├─ Edit.cshtml
-│       ├─ Details.cshtml
-│       └─ Delete.cshtml
-│
-├─ wwwroot/                     <-- Archivos estáticos
-│   ├─ css/
-│   │   ├─ site.css
-│   │   └─ TaskFlowWeb.styles.css
-│   ├─ js/
-│   │   └─ site.js
-│   ├─ images/
-│   │   └─ logo.png
-│   ├─ lib/                     <-- Bootstrap, jQuery, jQuery-validation
-│   └─ favicon.ico
-│
-├─ appsettings.json
-├─ appsettings.Development.json
-├─ Program.cs                   <-- Configuración principal
-├─ TaskFlowWeb.csproj
-├─ TaskFlowWeb.sln
-├─ taskflow.db                  <-- Base de datos SQLite
-├─ taskflow.db-shm
-├─ taskflow.db-wal
-└─ TaskFlowWeb.db
+|
+|-- Controllers/
+|   |-- HomeController.cs
+|   |-- ProjectsController.cs
+|   `-- TasksController.cs
+|
+|-- Data/
+|   `-- AppDbContext.cs
+|
+|-- Models/
+|   |-- Project.cs
+|   |-- TaskItem.cs
+|   |-- ErrorViewModel.cs
+|   `-- ViewModels/
+|       `-- DashboardViewModel.cs
+|
+|-- Views/
+|   |-- Shared/
+|   |   |-- _Layout.cshtml
+|   |   |-- _ValidationScriptsPartial.cshtml
+|   |   |-- Error.cshtml
+|   |   `-- _Layout.cshtml.css
+|   |
+|   |-- Home/
+|   |   |-- Index.cshtml
+|   |   `-- Privacy.cshtml
+|   |
+|   |-- Projects/
+|   |   |-- Index.cshtml
+|   |   |-- Create.cshtml
+|   |   |-- Edit.cshtml
+|   |   |-- Details.cshtml
+|   |   `-- Delete.cshtml
+|   |
+|   `-- Tasks/
+|       |-- Index.cshtml
+|       |-- Create.cshtml
+|       |-- Edit.cshtml
+|       |-- Details.cshtml
+|       `-- Delete.cshtml
+|
+|-- wwwroot/
+|   |-- css/
+|   |   |-- site.css
+|   |   `-- TaskFlowWeb.styles.css
+|   |-- js/
+|   |   `-- site.js
+|   |-- images/
+|   |   `-- logo.png
+|   |-- lib/
+|   `-- favicon.ico
+|
+|-- appsettings.json
+|-- appsettings.Development.json
+|-- Program.cs
+|-- TaskFlowWeb.csproj
+|-- TaskFlowWeb.sln
+`-- taskflow.db
 
 ---
 
