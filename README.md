@@ -48,65 +48,61 @@ El proyecto sigue el patrón **Model–View–Controller (MVC)**, separando clar
 
 ### 📂 Estructura del proyecto
 
-TaskFlowWeb/
-|
-|-- Controllers/
-|   |-- HomeController.cs
-|   |-- ProjectsController.cs
-|   `-- TasksController.cs
-|
-|-- Data/
-|   `-- AppDbContext.cs
-|
-|-- Models/
-|   |-- Project.cs
-|   |-- TaskItem.cs
-|   |-- ErrorViewModel.cs
-|   `-- ViewModels/
-|       `-- DashboardViewModel.cs
-|
-|-- Views/
-|   |-- Shared/
-|   |   |-- _Layout.cshtml
-|   |   |-- _ValidationScriptsPartial.cshtml
-|   |   |-- Error.cshtml
-|   |   `-- _Layout.cshtml.css
-|   |
-|   |-- Home/
-|   |   |-- Index.cshtml
-|   |   `-- Privacy.cshtml
-|   |
-|   |-- Projects/
-|   |   |-- Index.cshtml
-|   |   |-- Create.cshtml
-|   |   |-- Edit.cshtml
-|   |   |-- Details.cshtml
-|   |   `-- Delete.cshtml
-|   |
-|   `-- Tasks/
-|       |-- Index.cshtml
-|       |-- Create.cshtml
-|       |-- Edit.cshtml
-|       |-- Details.cshtml
-|       `-- Delete.cshtml
-|
-|-- wwwroot/
-|   |-- css/
-|   |   |-- site.css
-|   |   `-- TaskFlowWeb.styles.css
-|   |-- js/
-|   |   `-- site.js
-|   |-- images/
-|   |   `-- logo.png
-|   |-- lib/
-|   `-- favicon.ico
-|
-|-- appsettings.json
-|-- appsettings.Development.json
-|-- Program.cs
-|-- TaskFlowWeb.csproj
-|-- TaskFlowWeb.sln
-`-- taskflow.db
+- **TaskFlowWeb/**
+  - **Controllers/**
+    - HomeController.cs — Dashboard / Home
+    - ProjectsController.cs — CRUD de Proyectos
+    - TasksController.cs — CRUD de Tareas
+
+  - **Data/**
+    - AppDbContext.cs — Entity Framework Core DbContext
+
+  - **Models/**
+    - Project.cs — Modelo Proyecto
+    - TaskItem.cs — Modelo Tarea
+    - ErrorViewModel.cs — Modelo de error
+    - **ViewModels/**
+      - DashboardViewModel.cs — Modelo del dashboard
+
+  - **Views/**
+    - **Shared/**
+      - _Layout.cshtml
+      - _ValidationScriptsPartial.cshtml
+      - Error.cshtml
+      - _Layout.cshtml.css
+    - **Home/**
+      - Index.cshtml — Dashboard
+      - Privacy.cshtml
+    - **Projects/**
+      - Index.cshtml
+      - Create.cshtml
+      - Edit.cshtml
+      - Details.cshtml
+      - Delete.cshtml
+    - **Tasks/**
+      - Index.cshtml
+      - Create.cshtml
+      - Edit.cshtml
+      - Details.cshtml
+      - Delete.cshtml
+
+  - **wwwroot/**
+    - **css/**
+      - site.css
+      - TaskFlowWeb.styles.css
+    - **js/**
+      - site.js
+    - **images/**
+      - logo.png
+    - **lib/**
+    - favicon.ico
+
+  - appsettings.json
+  - appsettings.Development.json
+  - Program.cs
+  - TaskFlowWeb.csproj
+  - TaskFlowWeb.sln
+  - taskflow.db
 
 ---
 
