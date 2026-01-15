@@ -108,7 +108,7 @@ El proyecto sigue el patrón **Model–View–Controller (MVC)**, separando clar
 
 ## 📷 Capturas de pantalla
 
-<img width="274" height="605" alt="Pantalla principal" src="capturas de pantalla/pantalla_principal.png" />
+<img width="300" height="700" alt="Pantalla principal" src="capturas de pantalla/pantalla_principal.png" />
 <img width="274" height="605" alt="Pantalla principal 2" src="capturas de pantalla/pantalla_principal_2.png" />
 <img width="274" height="605" alt="Pantalla de proyectos" src="capturas de pantalla/pantalla_de_proyectos.png" />
 <img width="274" height="605" alt="Pantalla de clientes" src="capturas de pantalla/pantalla_de_tareas.png" />
